@@ -3,28 +3,67 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UniLibProject"
+     
         mc:Ignorable="d"
-        Height="400" Width="350"
+        Height="350" 
+        Width="300"
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Background="#222"
+        Background="#222222"
         
         
       
         >
-    <Grid>
+
+
+
+
+    <Border BorderBrush="#000000" BorderThickness="1" CornerRadius="8">
+
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-           
-        </Grid> 
-    </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".5*" />
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="مدیریت کتابخانه"  Foreground="AliceBlue" Opacity="0.65" FontSize="19" VerticalAlignment="Center" HorizontalAlignment="Center" Width="298" TextAlignment="Center" />
+
+
+                <StackPanel Grid.Row="1" VerticalAlignment="Bottom" >
+                    <TextBox Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Bottom" Text= "نام کاربری" TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF" BorderThickness="0,0,0,1"   FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2" FontSize="15" />
+                    
+                    <Line></Line>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" VerticalAlignment="Bottom" >
+                    <PasswordBox  Password="password"  Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Center" SelectionBrush="#72FFFFFF" BorderThickness="0,0,0,1"   FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2" FontSize="15" TextOptions.TextHintingMode="Animated" HorizontalContentAlignment="Center" />
+
+                    <Line></Line>
+                </StackPanel>
+
+                <CheckBox Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FFE8E8E8" FlowDirection="RightToLeft" Margin="10,0,0,0" >مرا به یاد بسپار</CheckBox>
+                <TextBlock  Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center" Cursor="Pen" FlowDirection="RightToLeft"  Foreground="#FFA8A9AE" Text="فراموشی رمز عبور؟" Margin="0,0,15,0" />
+
+                <Button  BorderThickness="0" Width="Auto" Grid.Row="4" Background="#3498db" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="50,10" ClipToBounds="False" Click="Button_Click" >
+                    ورود
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+            </Grid>
+        </Grid>
+    </Border>
+
 </Window>
