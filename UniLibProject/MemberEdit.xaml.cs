@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace UniLibProject
 {
     /// <summary>
-    /// Interaction logic for EmployeeMembers.xaml
+    /// Interaction logic for MemberEdit.xaml
     /// </summary>
-    public partial class EmployeeMembers : Window
+    public partial class MemberEdit : Window
     {
-        public EmployeeMembers()
+        public MemberEdit()
         {
             InitializeComponent();
-        }
-
-        private void MenuEmployeesBtn_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

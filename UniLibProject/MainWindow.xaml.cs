@@ -28,7 +28,7 @@ namespace UniLibProject
 
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
-            admin_employee ae = new admin_employee();
+            adminEmployee ae = new adminEmployee();
             ae.Show();
             this.Close();
         }

@@ -23,5 +23,10 @@ namespace UniLibProject
         {
             InitializeComponent();
         }
+
+        private void UserIdTbx_TextChanged()
+        {
+
+        }
     }
 }
