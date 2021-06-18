@@ -24,7 +24,7 @@ namespace UniLibProject
             InitializeComponent();
         }
 
-        private void UserIdTbx_TextChanged()
+        private void UserIdTbx_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
