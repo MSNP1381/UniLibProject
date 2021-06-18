@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace UniLibProject
 {
@@ -23,12 +12,41 @@ namespace UniLibProject
         public MainWindow()
         {
             InitializeComponent();
-            
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void closeBtn_Click(object sender, RoutedEventArgs e)
         {
+            Close();
+        }
 
+        private void GoRegisterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterPage r = new RegisterPage();
+            r.Show();
+            this.Close();
+        }
+
+        private void EnterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            admin_employee ae = new admin_employee();
+            ae.Show();
+            this.Close();
+        }
+
+        private void UserNameTbx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+        }
+
+        private void PasswordChangedHandler(Object sender, RoutedEventArgs args)
+        {
+            // Increment a counter each time the event fires.
+            var box = sender as PasswordBox;
+            if (box.Password == "") { 
+                passwordtb.Visibility = Visibility.Visible;
+            }
+            else{
+                passwordtb.Visibility = Visibility.Hidden;
+            }
         }
     }
 }

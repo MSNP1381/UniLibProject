@@ -1,0 +1,84 @@
+﻿<Window x:Class="UniLibProject.AdminBooks"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="admin_employee"
+        Height="456.774"
+        Width="500"
+                WindowStyle="None"
+        ResizeMode="NoResize"
+
+AllowsTransparency="True"
+Background="Transparent"
+        WindowStartupLocation="CenterScreen">
+    <Border CornerRadius="9" BorderBrush="#99FFC0C0" BorderThickness="0" Background="#292f36">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="43*" />
+            </Grid.RowDefinitions>
+            <StackPanel Background="#d9d4d1">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </StackPanel.Resources>
+            </StackPanel>
+            <TextBlock Grid.Row="0"  Foreground="Black" Opacity="0.85" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center" Width="298" TextAlignment="Center" Height="18" Margin="251,0"     ><Run FlowDirection="RightToLeft" Text="مدیریت - کارمندان" /></TextBlock>
+
+            <Button Grid.Row="0" x:Name="closeBtn" HorizontalAlignment="Right"
+                        FontSize="8" Background="#FFF02525"
+                        BorderThickness="1"  Width="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Content="x" BorderBrush="{x:Null}" Click="closeBtn_Click" VerticalAlignment="Center" Height="20" Margin="0">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="19*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Border  Grid.Column="2" BorderThickness="2 0 0 0 " BorderBrush="#f1faee">
+                    <StackPanel>
+                        <Button x:Name="MenuEmployeesBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Margin="0,9,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuEmployeesBtn_Click">&#xE7EF;</Button>
+                        <Button x:Name="MenuBooksBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Margin="0,9,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuBooksBtn_Click">&#xE02F;</Button>
+                        <Button  x:Name="MenuFinBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Margin="0,9,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuFinBtn_Click">&#xE227;</Button>
+                    </StackPanel>
+                </Border>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45*"></RowDefinition>
+
+
+                        <RowDefinition Height="392*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" VerticalAlignment="Center" Orientation="Horizontal" Height="32" Margin="0,9,0,4">
+                        <Button x:Name="Add_bookBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Click="Add_bookBtn_Click" ></Button>
+                        <TextBlock Foreground="#92FFFFFF" Background="#00000000" TextWrapping="Wrap" TextAlignment="Center"    FlowDirection="RightToLeft" Margin="15,0,15,3" Padding="0" FontSize="15" Text="لیست کتب" Width="399" VerticalAlignment="Bottom" />
+                    </StackPanel>
+
+                    <ItemsControl  Grid.Row="1" Margin="20" Name="lvEmployees">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold">-</Button>
+                                    <TextBlock Grid.Column="1" Text="{Binding Name}" FlowDirection="RightToLeft" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
