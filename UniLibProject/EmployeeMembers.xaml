@@ -47,12 +47,11 @@
                 <Button
                     x:Name="closeBtn"
                     Grid.Row="0"
-                    Grid.Column="1"
                     Width="20"
                     Height="20"
                     Margin="0"
                     HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Bottom"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Background="#FFF02525"

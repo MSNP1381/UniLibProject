@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -7,8 +8,10 @@ namespace UniLibProject
 {
 
     public partial class RegisterPage : Window
-    {
-        public RegisterPage()
+    { 
+       UniLibDbEntities2 _db = new UniLibDbEntities2();
+
+    public RegisterPage()
         {
             InitializeComponent();
         }
@@ -38,10 +41,40 @@ namespace UniLibProject
 
         private void GoPaymaentBtn_Click(object sender, RoutedEventArgs e)
         {
-            Payment p = new Payment();
-            p.Show();
-            this.Close();
+           // EmailTbx;
+          //  PassTbx;
+          //  UserNameTbx;
+          //  PhoneTbx;
+            Member newMember = new Member()
+            {
+                name =UserNameTbx.Text,
+                email =EmailTbx.Text,
+                charge =0,
+                Phone =Convert.ToDecimal( PhoneTbx.Text),
+                pass=PassTbx.Text,
+                date_added = DateTime.Now
+            };
 
+
+            var MemberFinder = (from m in _db.Member
+                                   where m.name == newMember.name || m.Phone == newMember.Phone || m.email == newMember.email
+                                   select m).ToList();
+            if (MemberFinder.Count > 0)
+            {
+                MessageBox.Show("چنین کاربری وجود دارد", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            else
+            {
+
+                _db.Member.Add(newMember);
+                _db.SaveChanges();
+                var i = _db.Member.ToList();
+
+                Payment p = new Payment();
+                p.Show();
+                this.Close();
+            }
         }
 
 

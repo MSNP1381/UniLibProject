@@ -23,10 +23,10 @@ namespace UniLibProject
         {
             InitializeComponent();
      
-            List<Employee> items = new List<Employee>();
-            items.Add(new Employee() { Name = "اصغر", Id=0 });
-            items.Add(new Employee() { Name = "شفتالی",Id=1});
-            items.Add(new Employee() { Name = "هعیم", Id = 2 });
+            List<Employee2> items = new List<Employee2>();
+            items.Add(new Employee2() { Name = "اصغر", Id=0 });
+            items.Add(new Employee2() { Name = "شفتالی",Id=1});
+            items.Add(new Employee2() { Name = "هعیم", Id = 2 });
             lvEmployees.ItemsSource = items;
         }
 
@@ -70,7 +70,7 @@ namespace UniLibProject
 
         }
     }
-    class Employee
+    class Employee2
     {
         public int Id { get; set; }
         public string Name { get; set; }

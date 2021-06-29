@@ -28,5 +28,30 @@ namespace UniLibProject
         {
 
         }
+
+        private void closeBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuBooksBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuFinBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuEmployeeEditBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Add_bookBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

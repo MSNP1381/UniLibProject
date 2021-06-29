@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UniLibDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="code" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="author" Type="varchar" MaxLength="50" />
+          <Property Name="Genere" Type="varchar" MaxLength="50" />
+          <Property Name="Borrow_date" Type="datetime" />
+          <Property Name="MemberId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'UniLibDb.dbo.Employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="pass" Type="varchar" MaxLength="50" />
+          <Property Name="balance" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="date_added" Type="datetime" />
+          <Property Name="date_charged" Type="datetime" />
+          <Property Name="days_left" Type="int" />
+          <Property Name="charge" Type="money" />
+          <Property Name="pass" Type="nchar" MaxLength="10" />
+          <Property Name="pic" Type="image" />
+        </EntityType>
+        <Association Name="FK__Book__MemberId__38996AB5">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__MemberId__398D8EEE">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__MemberId__3B75D760">
+          <End Role="Member" Type="Self.Member" Multiplicity="0..1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Person_id">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Book1" Type="Self.Book" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UniLibDbModelStoreContainer">
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Employee].[Id] AS [Id], 
+    [Employee].[name] AS [name], 
+    [Employee].[pass] AS [pass], 
+    [Employee].[balance] AS [balance], 
+    [Employee].[phone] AS [phone]
+    FROM [dbo].[Employee] AS [Employee]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Book__MemberId__38996AB5" Association="Self.FK__Book__MemberId__38996AB5">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__MemberId__398D8EEE" Association="Self.FK__Book__MemberId__398D8EEE">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__MemberId__3B75D760" Association="Self.FK__Book__MemberId__3B75D760">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Person_id" Association="Self.FK_Person_id">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Book1" EntitySet="Book" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UniLibDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Genere" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Borrow_date" Type="DateTime" Precision="3" />
+          <Property Name="MemberId" Type="Int32" />
+          <NavigationProperty Name="Member" Relationship="UniLibDbModel.FK__Book__MemberId__38996AB5" FromRole="Book" ToRole="Member" />
+          <NavigationProperty Name="Member1" Relationship="UniLibDbModel.FK__Book__MemberId__398D8EEE" FromRole="Book" ToRole="Member" />
+          <NavigationProperty Name="Book1" Relationship="UniLibDbModel.FK_Person_id" FromRole="Book" ToRole="Book1" />
+          <NavigationProperty Name="Book2" Relationship="UniLibDbModel.FK_Person_id" FromRole="Book1" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="Member">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="date_added" Type="DateTime" Precision="3" />
+          <Property Name="date_charged" Type="DateTime" Precision="3" />
+          <Property Name="days_left" Type="Int32" />
+          <Property Name="charge" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Book" Relationship="UniLibDbModel.FK__Book__MemberId__38996AB5" FromRole="Member" ToRole="Book" />
+          <NavigationProperty Name="Book1" Relationship="UniLibDbModel.FK__Book__MemberId__398D8EEE" FromRole="Member" ToRole="Book" />
+        </EntityType>
+        <EntityContainer Name="UniLibDbEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Book" EntityType="Self.Book" />
+          <EntitySet Name="Member" EntityType="Self.Member" />
+          <EntitySet Name="Employee" EntityType="UniLibDbModel.Employee" />
+          <AssociationSet Name="FK__Book__MemberId__38996AB5" Association="UniLibDbModel.FK__Book__MemberId__38996AB5">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Book__MemberId__398D8EEE" Association="UniLibDbModel.FK__Book__MemberId__398D8EEE">
+            <End Role="Member" EntitySet="Member" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Person_id" Association="UniLibDbModel.FK_Person_id">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Book1" EntitySet="Book" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="balance" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Book__MemberId__38996AB5">
+          <End Type="UniLibDbModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="UniLibDbModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Book__MemberId__398D8EEE">
+          <End Type="UniLibDbModel.Member" Role="Member" Multiplicity="0..1" />
+          <End Type="UniLibDbModel.Book" Role="Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Member">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="MemberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Person_id">
+          <End Type="UniLibDbModel.Book" Role="Book" Multiplicity="1" />
+          <End Type="UniLibDbModel.Book" Role="Book1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Book1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UniLibDbModelStoreContainer" CdmEntityContainer="UniLibDbEntities2">
+          <EntitySetMapping Name="Book">
+            <EntityTypeMapping TypeName="UniLibDbModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="MemberId" ColumnName="MemberId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="Genere" ColumnName="Genere" />
+                <ScalarProperty Name="Borrow_date" ColumnName="Borrow_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Member">
+            <EntityTypeMapping TypeName="UniLibDbModel.Member">
+              <MappingFragment StoreEntitySet="Member">
+                <ScalarProperty Name="pic" ColumnName="pic" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="date_added" ColumnName="date_added" />
+                <ScalarProperty Name="date_charged" ColumnName="date_charged" />
+                <ScalarProperty Name="days_left" ColumnName="days_left" />
+                <ScalarProperty Name="charge" ColumnName="charge" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="UniLibDbModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="balance" ColumnName="balance" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

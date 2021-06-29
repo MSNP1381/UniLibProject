@@ -28,5 +28,10 @@ namespace UniLibProject
         {
 
         }
+
+        private void closeBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

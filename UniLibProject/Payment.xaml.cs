@@ -19,6 +19,12 @@ namespace UniLibProject
     /// </summary>
     public partial class Payment : Window
     {
+        UniLibDbEntities2 _db = new UniLibDbEntities2();
+        int Id {
+            get;
+        }
+        private decimal
+            money=20000;
         public Payment()
         {
             InitializeComponent();
@@ -35,6 +41,20 @@ namespace UniLibProject
         }
         private void CheckoutBtn_Click(object sender, RoutedEventArgs e)
         {
+            bool allCorrect = true;
+            if (allCorrect) 
+            {
+                var TheMember = (from m in _db.Member
+                                 where m.Id == Id
+                                 select m
+                         ).Single();
+                TheMember.charge += this.money;
+                _db.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("چنین کارتی وجود ندارد", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             Close();
         }
     }

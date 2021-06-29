@@ -48,5 +48,10 @@ namespace UniLibProject
         {
 
         }
+
+        private void Add_bookBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
