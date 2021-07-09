@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace UniLibProject
 {
@@ -19,15 +21,17 @@ namespace UniLibProject
     /// </summary>
     public partial class Payment : Window
     {
+        string username;
         UniLibDbEntities2 _db = new UniLibDbEntities2();
         int Id {
             get;
         }
         private decimal
             money=20000;
-        public Payment()
+        public Payment(string username)
         {
             InitializeComponent();
+            this.username = username;
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -41,15 +45,18 @@ namespace UniLibProject
         }
         private void CheckoutBtn_Click(object sender, RoutedEventArgs e)
         {
-            bool allCorrect = true;
-            if (allCorrect) 
+           
+            if (tbxCardNo.Text!="" && tbxMonth.Text!="" && tbxYear.Text!="" ) 
             {
-                var TheMember = (from m in _db.Member
-                                 where m.Id == Id
-                                 select m
-                         ).Single();
-                TheMember.charge += this.money;
-                _db.SaveChanges();
+                //regex
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "data source= ~serer name~; database = ~database name~; integrated security = True";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con; 
+                con.Open();
+                cmd.CommandText = "Update Member set mbalance ='"+money+"' and mremainingdays = '"+"30"+"'  whrere username = '"+username +"' ";
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
             else
             {

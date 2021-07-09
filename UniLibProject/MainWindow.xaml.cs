@@ -5,6 +5,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using UniLibProject.Data;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace UniLibProject
 {
@@ -21,29 +23,10 @@ namespace UniLibProject
 
         public MainWindow()
         {
+           
             InitializeComponent();
-     
-            /*
-
-                Member newMember = new Member()
-                {
-                    name = "dsa",
-                    email = "dsfs",
-                    balance = 3213213213,
-                    date_added = DateTime.Now
-
-                };
-                Member newMember2 = new Member()
-                {
-                    name = "dsa2",
-                    email = "dsfs2",
-                    balance = 32132132123,
-                    date_added = DateTime.Now                };
-
-                _db.Members.Add(newMember);
-            _db.SaveChanges();*/
-
-            }
+   
+        }
    
 
         private void closeBtn_Click(object sender, RoutedEventArgs e)
@@ -66,32 +49,32 @@ namespace UniLibProject
                 ae.Show();
                 this.Close();
             }
-            else
+            else if (pass!= "" && username!="")
             {
+                //establish connection
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "data source = DESKTOP-BAJP60P ; database = master ; integrated security = True";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                con.Open();
+                //check existance
+                cmd.CommandText = "select * from Login where username = '" + username + "'  and  password = '" + pass + "'  ";
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
 
-                var theMember = (from m in _db.Member
-                          where m.name == username && m.pass == pass
-                          select m).DefaultIfEmpty().Single();
-                if (theMember != null) 
+                if (dt.Rows.Count > 0)
                 {
-
+                    //check usertype and show relatd form
                 }
                 else 
                 {
-                    var theEmployee = (from m in _db.Employee
-                                     where m.name == username && m.pass == pass
-                                     select m).DefaultIfEmpty().Single();
-                    if (theEmployee != null) 
-                    {
-                        var em = new EmployeeMembers();
-                        em.Show();
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("چنین کاربری وجود ندارد", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                   MessageBox.Show("چنین کاربری وجود ندارد", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
+            }
+            else
+            {
+                MessageBox.Show("جاهای خالی را پر کنید", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
             }
           
         }

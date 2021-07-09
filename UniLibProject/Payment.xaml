@@ -58,7 +58,7 @@
                 </Border>
 
                 <StackPanel Grid.Row="2" VerticalAlignment="Bottom" Height="23">
-                    <TextBox Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Bottom" Text="شماره کارت"
+                    <TextBox x:Name="tbxCardNo" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Bottom" Text="شماره کارت"
                              TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF"
                              BorderThickness="0,0,0,1" FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2"
                              FontSize="15" />
@@ -74,7 +74,7 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel VerticalAlignment="Bottom">
-                        <TextBox Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Bottom" Text="cvv2"
+                        <TextBox x:Name="tbxcvv2" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Bottom" Text="cvv2"
                                  TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF"
                                  BorderThickness="0,0,0,1" FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2"
                                  FontSize="15" />
@@ -82,7 +82,7 @@
                         <Line />
                     </StackPanel>
                     <StackPanel Grid.Column="1" VerticalAlignment="Bottom">
-                        <TextBox Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Bottom" Text=" سال"
+                        <TextBox x:Name="tbxYear" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Bottom" Text=" سال"
                                  TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF"
                                  BorderThickness="0,0,0,1" FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2"
                                  FontSize="15" TextChanged="TextBox_TextChanged" />
@@ -90,7 +90,7 @@
                         <Line />
                     </StackPanel>
                     <StackPanel Grid.Column="2" VerticalAlignment="Bottom">
-                        <TextBox Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Bottom" Text="ماه"
+                        <TextBox x:Name="tbxMonth" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Bottom" Text="ماه"
                                  TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF"
                                  BorderThickness="0,0,0,1" FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2"
                                  FontSize="15" />
