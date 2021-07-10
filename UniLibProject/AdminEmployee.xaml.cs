@@ -44,15 +44,39 @@ namespace UniLibProject
 
         private void MenuEmployeesBtn_Click(object sender, RoutedEventArgs e)
         {
+            //add employees
+            //if (PassTbx.Text != "" && UserNameTbx.Text != "" && EmailTbx.Text != "")
+            //{ 
+            //    //establish connection
+            //    SqlConnection con = new SqlConnection();
+            //    con.ConnectionString = "data source = DESKTOP-BAJP60P ; database = master ; integrated security = True";
+            //    SqlCommand cmd = new SqlCommand();
+            //    cmd.Connection = con;
+            //    con.Open();
 
+            //    //gashtan donbale ketab ba in moshakhasat tooye liste ketaba
+            //    cmd.CommandText = "select * from Employee where bname = '" + bName + "'  and  bauthor = '" + bAuthor + "'   and  bgenre = '" + bGenre + "'   and   bcode = '" + bPubNo + "' ";
+            //    //age ketab jadid bud
+            //    cmd.CommandText = "insert into Book (bname, bauthor, bgenre, bcode, bcount) values ('" + bName + "' , '" + bAuthor + "' , '" + bGenre + "' , '" + bPubNo + "'  , '" + "10" + "') ";
+            //    //insert
+            //    cmd.ExecuteNonQuery();
+            //    //close
+            //    con.Close();
+
+            //    //make sure it's stored
+            //    MessageBox.Show("Data saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            //    BookNameTbx.Clear();
+            //    AuthotNameTbx.Clear();
+            //    GenereTbx.Clear();
+            //    PubNoTbx.Clear();
+            //}
         }
 
         private void MenuBooksBtn_Click(object sender, RoutedEventArgs e)
         {
-           
-            AddBook ab = new AddBook();
+            AdminBooks ab = new AdminBooks();
             ab.Show();
-            this.Hide(); //?????
+            this.Hide(); 
         }
 
         private void MenuFinBtn_Click(object sender, RoutedEventArgs e)
@@ -72,23 +96,14 @@ namespace UniLibProject
 
         private void AddEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            IncreaseBalance ib = new IncreaseBalance();
+            ib.Show();
+            this.Close();
         }
 
         private void btnShowBooks_Click(object sender, RoutedEventArgs e)
         {
-            //namayeshe listi az ketab ha 
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = DESKTOP-BAJP60P ; database = master ; integrated security = True";
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
-
-            SqlDataAdapter connDA = new SqlDataAdapter("Select * from Book", con);
-            DataTable table = new DataTable("Book");
-            connDA.Fill(table);
-            dataGrid1.ItemsSource = table.DefaultView;
-
-            MessageBox.Show("", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            
 
         }
     }

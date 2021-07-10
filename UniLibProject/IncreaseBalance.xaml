@@ -23,7 +23,7 @@ Background="Transparent"
                 <Button x:Name="CloseBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Right" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFDCD6D6" FontSize="22" HorizontalContentAlignment="Center" Height="26" Margin="0,3,6,4" Width="26" Click="CloseBtn_Click"  ></Button>
 
                 <StackPanel Grid.Row="1" VerticalAlignment="Center" >
-                    <TextBox x:Name="BookNameTbx" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Center" Text= "مقدار افزایش موچودی" TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF" BorderThickness="0,0,0,1"   FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2" FontSize="15" />
+                    <TextBox x:Name="tbxMoney" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Center" Text= "مقدار افزایش موجودی" TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF" BorderThickness="0,0,0,1"   FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2" FontSize="15" />
 
                     <Line></Line>
                 </StackPanel>

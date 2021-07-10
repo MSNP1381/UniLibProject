@@ -33,7 +33,6 @@ namespace UniLibProject
 
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
-            //  AuthotNameTbx   GenereTbx       BookNameTbx     PubNoTbx
             //make sure all fields are filled
             if (BookNameTbx.Text != "" && AuthotNameTbx.Text != "" && GenereTbx.Text != "" && PubNoTbx.Text != "")
             {
@@ -41,13 +40,11 @@ namespace UniLibProject
                 string bAuthor = AuthotNameTbx.Text;
                 string bGenre = GenereTbx.Text;
                 int bPubNo = int.Parse(PubNoTbx.Text);
-
-                //   ? tedad e ketab ezafe shode nemikhad?
-                //int bQuantity = int.Parse(Count.text);
+                int bQuantity = int.Parse(tbxQuantity.Text);
 
                 //establish connection
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = DESKTOP-BAJP60P ; database = master ; integrated security = True";
+                con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 con.Open();
@@ -55,7 +52,7 @@ namespace UniLibProject
                 //gashtan donbale ketab ba in moshakhasat tooye liste ketaba
                 cmd.CommandText = "select * from Book where bname = '" + bName + "'  and  bauthor = '" + bAuthor + "'   and  bgenre = '" + bGenre+ "'   and   bcode = '" + bPubNo + "' ";
                 //age ketab jadid bud
-                cmd.CommandText = "insert into Book (bname, bauthor, bgenre, bcode, bcount) values ('" + bName + "' , '" + bAuthor + "' , '" + bGenre + "' , '" + bPubNo + "'  , '"+ "10" + "') ";
+                cmd.CommandText = "insert into Book (bname, bauthor, bgenre, bcode, bcount) values ('" + bName + "' , '" + bAuthor + "' , '" + bGenre + "' , '" + bPubNo + "'  , '"+ bQuantity + "') ";
                 //insert
                 cmd.ExecuteNonQuery();
                 //close

@@ -51,7 +51,6 @@ Background="Transparent"
                         <Button x:Name="MenuEmployeesBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Margin="0,9,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuEmployeesBtn_Click">&#xE7EF;</Button>
                         <Button x:Name="MenuBooksBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Margin="0,9,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuBooksBtn_Click">&#xE02F;</Button>
                         <Button  x:Name="MenuFinBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Margin="0,9,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuFinBtn_Click">&#xE227;</Button>
-                        <Button x:Name="btnShowBooks" Content="Show Books" Margin="0,0,0.4,0" Height="42" FontSize="9" Click="btnShowBooks_Click" RenderTransformOrigin="0.5,0.5" FontWeight="Bold"/>
                         <Button x:Name="btnShowEmployee" Content="show employee" Height="43" Margin="0,0,0.4,0" FontSize="7" FontWeight="Bold"/>
                         <Button x:Name="btnShowBalance" Content="show balance" Height="41" Margin="0,0,0.4,0" FontSize="7" FontWeight="Bold"/>
                     </StackPanel>
@@ -83,12 +82,10 @@ Background="Transparent"
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
-                        <DataGrid x:Name="dataGrid1" HorizontalAlignment="Left" Height="100" Width="392" Visibility="Visible"/>
                         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Employees" Width="392" Foreground="#FFC7C7C7"/>
                         <DataGrid x:Name="dataGrid2" HorizontalAlignment="Left" Height="100" Width="392"/>
                         <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="bank balance" Width="392" Foreground="#FFBDBDBD"/>
                     </ItemsControl>
-                    <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="30,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Books" VerticalAlignment="Top" Foreground="#FFBDBDBD"/>
                 </Grid>
             </Grid>
 

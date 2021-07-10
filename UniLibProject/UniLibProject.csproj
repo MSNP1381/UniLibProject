@@ -190,6 +190,9 @@
     <Compile Include="Book.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="BorrowBook.xaml.cs">
+      <DependentUpon>BorrowBook.xaml</DependentUpon>
+    </Compile>
     <Compile Include="convertTextInputToVisibility.cs" />
     <Compile Include="Contents\RegexClass.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
@@ -214,6 +217,9 @@
     </Compile>
     <Compile Include="MemberEdit.xaml.cs">
       <DependentUpon>MemberEdit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MembersDashboard.xaml.cs">
+      <DependentUpon>MembersDashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
@@ -252,6 +258,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BorrowBook.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EmployeeAccount.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -281,6 +291,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MemberEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MembersDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

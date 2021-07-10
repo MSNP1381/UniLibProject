@@ -76,6 +76,7 @@ Background="Transparent"
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
+                        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="352" Width="412"/>
                     </ItemsControl>
                 </Grid>
             </Grid>

@@ -49,11 +49,17 @@ namespace UniLibProject
                 ae.Show();
                 this.Close();
             }
+            else if (username == "guest" && pass == "guest")
+            {
+                MembersDashboard md = new MembersDashboard(username);
+                md.Show();
+                this.Close();
+            }
             else if (pass!= "" && username!="")
             {
                 //establish connection
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = DESKTOP-BAJP60P ; database = master ; integrated security = True";
+                con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 con.Open();
@@ -65,7 +71,14 @@ namespace UniLibProject
 
                 if (dt.Rows.Count > 0)
                 {
+                    string usertype = "member";
                     //check usertype and show relatd form
+                    if (usertype == "member")
+                    {
+                        MembersDashboard md = new MembersDashboard(username);
+                        md.Show();
+                        this.Close();
+                    }
                 }
                 else 
                 {

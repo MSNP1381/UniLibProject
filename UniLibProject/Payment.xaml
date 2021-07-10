@@ -53,7 +53,7 @@
                                    FontSize="30">
                             هزینه
                         </TextBlock>
-                        <TextBlock Foreground="White" FontSize="30">۲۰۰۰۰۰۰</TextBlock>
+                        <TextBlock x:Name="tblmoney" Foreground="White" FontSize="30"><Run Text="۲۰۰۰۰۰۰"/></TextBlock>
                     </StackPanel>
                 </Border>
 

@@ -22,17 +22,19 @@ namespace UniLibProject
     public partial class Payment : Window
     {
         string username;
+        decimal money;
         UniLibDbEntities2 _db = new UniLibDbEntities2();
         int Id {
             get;
         }
-        private decimal
-            money=20000;
-        public Payment(string username)
+        public Payment(string username, decimal money)
         {
             InitializeComponent();
+            tblmoney.Text = money.ToString();
+            this.money = money;
             this.username = username;
         }
+
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -50,11 +52,12 @@ namespace UniLibProject
             {
                 //regex
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source= ~serer name~; database = ~database name~; integrated security = True";
+                con.ConnectionString = "data source= (LocalDb)\\LocalDBDemo; database = master; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con; 
                 con.Open();
                 cmd.CommandText = "Update Member set mbalance ='"+money+"' and mremainingdays = '"+"30"+"'  whrere username = '"+username +"' ";
+                cmd.CommandText = "Update Bank set busername ='" + username + "' and btransaction = '" + money + "'  and btime = '" + DateTime.Now + "' ";
                 cmd.ExecuteNonQuery();
                 con.Close();
             }

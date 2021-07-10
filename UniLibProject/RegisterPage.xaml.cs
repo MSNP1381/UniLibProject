@@ -62,7 +62,7 @@ namespace UniLibProject
 
                 //establish connection
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = DESKTOP-BAJP60P ; database = master ; integrated security = True";
+                con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 con.Open();
@@ -83,8 +83,8 @@ namespace UniLibProject
                     cmd.CommandText = "insert into Member (mname, memail, mphone, msignupdate, mrenewaldate, mremainingdays, mbalance) values ('" + name + "' , '" + email + "' , '" + Phone + "' , '" + signupDate + "'  , '" + "0" + "' , '" + "0" + "') ";
                     cmd.ExecuteNonQuery();
                     con.Close();
-
-                    Payment p = new Payment(name);
+                    decimal money = 20000;
+                    Payment p = new Payment(name, money);
                     p.Show();
                     this.Close();
                 }

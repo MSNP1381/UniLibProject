@@ -17,53 +17,38 @@ using System.Data.SqlClient;
 namespace UniLibProject
 {
     /// <summary>
-    /// Interaction logic for AdminBooks.xaml
+    /// Interaction logic for MembersDashboard.xaml
     /// </summary>
-    public partial class AdminBooks : Window
+    public partial class MembersDashboard : Window
     {
-        public AdminBooks()
+        string user;
+        public MembersDashboard(string username)
         {
             InitializeComponent();
+            textBlock.Text = username;
+            user = username;
             //namayeshe listi az ketab ha 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
+            con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo; database = master ; integrated security = True";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
             SqlDataAdapter connDA = new SqlDataAdapter("Select * from Book", con);
             DataTable table = new DataTable("Book");
             connDA.Fill(table);
+            dataGrid.Visibility = Visibility.Visible;
             dataGrid.ItemsSource = table.DefaultView;
-
+            con.Close();
         }
 
-       
-        private void Add_bookBtn_Click(object sender, RoutedEventArgs e)
-        {
-            AddBook ab = new AddBook();
-            ab.Show();
-            this.Hide();
-        }
 
-        private void closeBtn_Click(object sender, RoutedEventArgs e)
+        private void button3_Click(object sender, RoutedEventArgs e)
         {
+            // amanat gereftane ketab
+            BorrowBook bb = new BorrowBook(user);
+            bb.Show();
             this.Close();
-        }
-
-        private void MenuEmployeesBtn_Click(object sender, RoutedEventArgs e)
-        {
-            adminEmployee ae = new adminEmployee();
-            ae.Show();
-            this.Hide();
-        }
-
-        private void MenuBooksBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuFinBtn_Click(object sender, RoutedEventArgs e)
-        {
+            
 
         }
     }
