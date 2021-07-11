@@ -12,11 +12,11 @@
         <Button x:Name="btnPenalty" Content="پرداخت جریمه‌ی تاخیر
                 " HorizontalAlignment="Left" Margin="673,147,0,0" VerticalAlignment="Top" Width="111" RenderTransformOrigin="1.508,0.858"/>
         <Button x:Name="btnBorrowBook" Content="امانت گرفتن کتاب" HorizontalAlignment="Left" Margin="691,192,0,0" VerticalAlignment="Top" Width="93" Click="button3_Click"/>
-        <Button x:Name="btnReturnBook" Content="پس دادن کتاب" HorizontalAlignment="Left" Margin="709,234,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnReturnBook" Content="پس دادن کتاب" HorizontalAlignment="Left" Margin="709,234,0,0" VerticalAlignment="Top" Width="75" Click="btnReturnBook_Click"/>
         <Button x:Name="btnBalance" Content="موجودی حساب" HorizontalAlignment="Left" Margin="709,276,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnProfile" Content="اطلاعات شخصی" HorizontalAlignment="Left" Margin="691,321,0,0" VerticalAlignment="Top" Width="93" Height="19"/>
+        <Button x:Name="btnProfile" Content="اطلاعات شخصی" HorizontalAlignment="Left" Margin="691,321,0,0" VerticalAlignment="Top" Width="93" Height="19" Click="btnProfile_Click"/>
         <Calendar HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="385,10,0,0" TextWrapping="Wrap" Text="نام کاربر" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="284,18,0,0" TextWrapping="Wrap" Text="نام کاربر" VerticalAlignment="Top"/>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="340" Margin="193,52,0,0" VerticalAlignment="Top" Width="453"/>
 
     </Grid>

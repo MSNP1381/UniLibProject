@@ -24,6 +24,7 @@ namespace UniLibProject
         string user;
         public MembersDashboard(string username)
         {
+
             InitializeComponent();
             textBlock.Text = username;
             user = username;
@@ -50,6 +51,21 @@ namespace UniLibProject
             this.Close();
             
 
+        }
+
+        private void btnReturnBook_Click(object sender, RoutedEventArgs e)
+        {
+            ReturnBook rb = new ReturnBook(user);
+            rb.Show();
+            this.Close();
+
+        }
+
+        private void btnProfile_Click(object sender, RoutedEventArgs e)
+        {
+            MemberProfile mp = new MemberProfile(user);
+            mp.Show();
+            this.Close();
         }
     }
 }

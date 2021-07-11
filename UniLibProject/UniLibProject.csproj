@@ -230,6 +230,9 @@
     <Compile Include="MemberEdit.xaml.cs">
       <DependentUpon>MemberEdit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MemberProfile.xaml.cs">
+      <DependentUpon>MemberProfile.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MembersDashboard.xaml.cs">
       <DependentUpon>MembersDashboard.xaml</DependentUpon>
     </Compile>
@@ -257,6 +260,9 @@
     </Compile>
     <Compile Include="RegisterPage.xaml.cs">
       <DependentUpon>RegisterPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnBook.xaml.cs">
+      <DependentUpon>ReturnBook.xaml</DependentUpon>
     </Compile>
     <Page Include="AddBook.xaml">
       <SubType>Designer</SubType>
@@ -322,6 +328,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MemberProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MembersDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -331,6 +341,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegisterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ReturnBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

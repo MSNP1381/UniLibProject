@@ -75,30 +75,45 @@ namespace UniLibProject
                     DataSet DS = new DataSet();
                     DA.Fill(DS);
                     int count2 = DS.Tables[0].Rows.Count;
-                    if (count2 < 6)
+                    //ketab tekrari nadarim
+                    cmd.CommandText = "select * from BRbook where brusername = '" + username + "' and brdatereturned = '" + null + "' and brbid = '"+bid+"' ";
+                    SqlDataAdapter DA2 = new SqlDataAdapter(cmd);
+                    DataSet DS2 = new DataSet();
+                    DA2.Fill(DS2);
+                    int count3 = DS2.Tables[0].Rows.Count;
+                    if (count3 != 0)
                     {
-                        //change book
-                        count--;
-                        cmd.CommandText = "UPDATE book SET bcount = '" + count + "' where bid = '" + bid + "'   ";
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                        //change BRBook
-                        con = new SqlConnection();
-                        con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
-                        cmd = new SqlCommand();
-                        cmd.Connection = con;
-                        con.Open();
-                        DateTime now = DateTime.Now;
-                        cmd.CommandText = "insert into BRbook (brusername, brbid, brdateborrowed, brdatereturned) values ('"+ username +"' , '"+ bid +"' , '"+ now +"' , '"+ null +"') ";
-                        cmd.ExecuteNonQuery();
-                        con.Close();
-                        MessageBox.Show("Data saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(" نمی‌توان از یک کتاب بیش از یکی داشت! ", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+
                     }
                     else
                     {
-                        MessageBox.Show(" کتابای قرض گرفته بیشتر از 5 تاست! ", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                        if (count2 < 6)
+                        {
+                            //farz mikonim dota sharte dg ro daran
 
+                            //change book
+                            count--;
+                            cmd.CommandText = "UPDATE book SET bcount = '" + count + "' where bid = '" + bid + "'   ";
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            //change BRBook
+                            con = new SqlConnection();
+                            con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+                            cmd = new SqlCommand();
+                            cmd.Connection = con;
+                            con.Open();
+                            DateTime now = DateTime.Now;
+                            cmd.CommandText = "insert into BRbook (brusername, brbid, brdateborrowed, brdatereturned) values ('" + username + "' , '" + bid + "' , '" + now + "' , '" + null + "') ";
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+                            MessageBox.Show("Data saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show(" کتابای قرض گرفته بیشتر از 5 تاست! ", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
                 }
                 else
                 {
