@@ -1,0 +1,61 @@
+﻿<Window x:Class="UniLibProject.AddEmployee"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Add Employee" 
+        Height="400" 
+        Width="300"
+AllowsTransparency="True"
+Background="Transparent"
+                        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Border CornerRadius="9" BorderBrush="#99FFC0C0" BorderThickness="0" Background="#292f36">
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="7*"></RowDefinition>
+                    <RowDefinition Height="25*"></RowDefinition>
+                    <RowDefinition Height="25*"></RowDefinition>
+                    <RowDefinition Height="25*"></RowDefinition>
+                    <RowDefinition Height="25*"></RowDefinition>
+                    <RowDefinition Height="25*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button x:Name="CloseBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFDCD6D6" FontSize="22" HorizontalContentAlignment="Center" Margin="0,-3,6,74.212" Width="26" Click="CloseBtn_Click" Grid.RowSpan="2" RenderTransformOrigin="0.515,0.5"  ></Button>
+
+                <StackPanel Grid.Row="1" VerticalAlignment="Center" >
+                    <TextBox x:Name="tbxname" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Center" Text= "نام کارمند" TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF" BorderThickness="0,0,0,1"   FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2" FontSize="15" />
+
+                    <Line></Line>
+                </StackPanel>
+                <StackPanel Grid.Row="2" VerticalAlignment="Center" >
+                    <TextBox x:Name="tbxemail" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Center" Text= "ایمیل" TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF" BorderThickness="0,0,0,1"   FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2" FontSize="15"  />
+
+                    <Line></Line>
+                </StackPanel>
+                <StackPanel Grid.Row="3" VerticalAlignment="Center" >
+                    <TextBox x:Name="tbxphone" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Center" Text= "شماره همراه" TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF" BorderThickness="0,0,0,1"   FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2" FontSize="15" />
+
+                    <Line></Line>
+                </StackPanel>
+                <StackPanel Grid.Row="4" VerticalAlignment="Center" >
+                    <TextBox x:Name="tbxbalance" Foreground="#92FFFFFF" Background="#00000000" VerticalAlignment="Center" Text= "موجودی" TextWrapping="Wrap" TextAlignment="Center" SelectionBrush="#72FFFFFF" BorderThickness="0,0,0,1"   FlowDirection="RightToLeft" Margin="15,0" Padding="0,0,0,2" FontSize="15" />
+
+                    <Line></Line>
+                </StackPanel>
+                <Button x:Name="AddBtn"  Grid.Row="10" FontSize="13" Background="#3498db" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="50,10" Click="EnterBtn_Click"  >
+                    ثبت
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="21,62.2,0,0" Grid.Row="4" Grid.RowSpan="2" TextWrapping="Wrap" Text="default password is : pass" VerticalAlignment="Top" Foreground="White" Width="269"/>
+                <Button x:Name="button" Content="back" HorizontalAlignment="Left" Margin="225,28.788,0,0" Grid.Row="5" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

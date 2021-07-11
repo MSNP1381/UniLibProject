@@ -44,28 +44,64 @@ namespace UniLibProject
 
                 //establish connection
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
+                con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
                 con.Open();
-                
-                //gashtan donbale ketab ba in moshakhasat tooye liste ketaba
-                cmd.CommandText = "select * from Book where bname = '" + bName + "'  and  bauthor = '" + bAuthor + "'   and  bgenre = '" + bGenre+ "'   and   bcode = '" + bPubNo + "' ";
-                //age ketab jadid bud
-                cmd.CommandText = "insert into Book (bname, bauthor, bgenre, bcode, bcount) values ('" + bName + "' , '" + bAuthor + "' , '" + bGenre + "' , '" + bPubNo + "'  , '"+ bQuantity + "') ";
-                //insert
-                cmd.ExecuteNonQuery();
-                //close
+                //check existance
+                cmd.CommandText = "select * from Book";
+                SqlDataReader rd = cmd.ExecuteReader();
+                bool flag = false;
+                //case sensetive
+                while (rd.Read())
+                {
+                    if ((rd[1].ToString() == bName) && (rd[2].ToString() == bAuthor) && (rd[3].ToString() == bGenre) && (int.Parse(rd[4].ToString()) == bPubNo))
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
                 con.Close();
+                if (flag == true)
+                {
+                    //book exists
+                    SqlConnection conn = new SqlConnection();
+                    conn.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+                    SqlCommand cmdd = new SqlCommand();
+                    cmdd.Connection = conn;
+                    conn.Open();
+                    cmdd.CommandText = "select * from Book where bname LIKE '" + bName + "' "; //check others too
 
-                //make sure it's stored
-                MessageBox.Show("Data saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                BookNameTbx.Clear();
-                AuthotNameTbx.Clear();
-                GenereTbx.Clear();
-                PubNoTbx.Clear();
+                    SqlDataAdapter DA1 = new SqlDataAdapter(cmdd);
+                    DataSet DS1 = new DataSet();
+                    DA1.Fill(DS1);  
 
-                // quantity change
+                    bQuantity += int.Parse(DS1.Tables[0].Rows[0][5].ToString());
+                    int id = int.Parse(DS1.Tables[0].Rows[0][0].ToString());
+                    cmdd.CommandText = "insert into Book (bname, bauthor, bgenre, bcode, bcount) values ('" + bName + "' , '" + bAuthor + "' , '" + bGenre + "' , '" + bPubNo + "'  , '" + bQuantity + "') ";
+                    cmdd.ExecuteNonQuery();
+                    conn.Close();
+
+                    //delete older record
+                    conn = new SqlConnection();
+                    conn.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+                    cmdd = new SqlCommand();
+                    cmdd.Connection = conn;
+                    conn.Open();
+                    cmdd.CommandText = "delete from Book where bid = '"+id+"' ";
+                    cmdd.ExecuteNonQuery();
+                    conn.Close();
+
+
+                    MessageBox.Show("Data saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    BookNameTbx.Clear();
+                    AuthotNameTbx.Clear();
+                    GenereTbx.Clear();
+                    PubNoTbx.Clear();
+
+
+                }
+
             }
             else
             {

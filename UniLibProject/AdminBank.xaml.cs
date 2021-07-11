@@ -17,44 +17,40 @@ using System.Data.SqlClient;
 namespace UniLibProject
 {
     /// <summary>
-    /// Interaction logic for AdminBooks.xaml
+    /// Interaction logic for AdminBank.xaml
     /// </summary>
-    public partial class AdminBooks : Window
+    public partial class AdminBank : Window
     {
-        public AdminBooks()
+        public AdminBank()
         {
             InitializeComponent();
-            //namayeshe listi az ketab ha 
+            //namayeshe listi az transaction ha 
             SqlConnection con = new SqlConnection();
             con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
-            SqlDataAdapter connDA = new SqlDataAdapter("Select * from Book", con);
-            DataTable table = new DataTable("Book");
+            SqlDataAdapter connDA = new SqlDataAdapter("Select * from Bank", con);
+            DataTable table = new DataTable("Bank");
             connDA.Fill(table);
             dataGrid.ItemsSource = table.DefaultView;
-
         }
 
-       
-        private void Add_bookBtn_Click(object sender, RoutedEventArgs e)
+        private void btnAddMoney_Click(object sender, RoutedEventArgs e)
         {
-            AddBook ab = new AddBook();
-            ab.Show();
-            this.Hide();
-        }
-
-        private void closeBtn_Click(object sender, RoutedEventArgs e)
-        {
+            IncreaseBalance ib = new IncreaseBalance("admin");
+            ib.Show();
             this.Close();
+        }
+
+        private void MenuFinBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void MenuEmployeesBtn_Click(object sender, RoutedEventArgs e)
         {
-            adminEmployee ae = new adminEmployee();
-            ae.Show();
-            this.Hide();
+
         }
 
         private void MenuBooksBtn_Click(object sender, RoutedEventArgs e)
@@ -62,7 +58,12 @@ namespace UniLibProject
 
         }
 
-        private void MenuFinBtn_Click(object sender, RoutedEventArgs e)
+        private void closeBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CheckoutBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }

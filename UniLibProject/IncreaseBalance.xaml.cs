@@ -7,7 +7,7 @@ namespace UniLibProject
     /// </summary>
     public partial class IncreaseBalance : Window
     {
-        public IncreaseBalance()
+        public IncreaseBalance(string username)
         {
             InitializeComponent();
         }
@@ -21,6 +21,7 @@ namespace UniLibProject
         {
             decimal money = decimal.Parse(tbxMoney.Text);
             Payment p = new Payment("admin" , money);
+            p.Show();
             this.Close();
 
         }

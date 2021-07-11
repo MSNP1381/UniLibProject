@@ -29,7 +29,7 @@ namespace UniLibProject
             user = username;
             //namayeshe listi az ketab ha 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo; database = master ; integrated security = True";
+            con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 

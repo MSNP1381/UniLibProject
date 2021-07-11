@@ -14,6 +14,8 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="265,334,0,0" TextWrapping="Wrap" Text="search in:" VerticalAlignment="Top"/>
         <RadioButton x:Name="rbtnbauthor" Content="book author" HorizontalAlignment="Left" Margin="265,375,0,0" VerticalAlignment="Top" Checked="rbtnbauthor_Checked"/>
         <RadioButton x:Name="rbtnbgenre" Content="book genre" HorizontalAlignment="Left" Margin="265,395,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.308,0.804" Checked="rbtnbgenre_Checked"/>
+        <TextBox x:Name="tbxBidNo" HorizontalAlignment="Left" Height="23" Margin="380,357,0,0" TextWrapping="Wrap" Text="enter bid to choose" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="button" Content="back" HorizontalAlignment="Left" Margin="697,109,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
 
     </Grid>
 </Window>

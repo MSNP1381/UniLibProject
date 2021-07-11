@@ -23,6 +23,7 @@ namespace UniLibProject
     {
         string username;
         string search;
+        DateTime now = DateTime.Now;
         public BorrowBook(string username)
         {
             InitializeComponent();
@@ -30,7 +31,7 @@ namespace UniLibProject
 
             //namayeshe listi az ketab ha 
             SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
+            con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
 
@@ -44,6 +45,66 @@ namespace UniLibProject
         private void btnBorrow_Click(object sender, RoutedEventArgs e)
         {
             //check if it's ok 2 borrow
+            string text = tbxBidNo.Text;
+            int bid;
+            bool result = Int32.TryParse(text, out bid);
+            if (result == false)
+            {
+                //error message box
+                MessageBox.Show(" bid باید عدد باشد ", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                //bedast avordan teedad e ketabaye mojod too ketabkhune
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
+                con.Open();
+                cmd.CommandText = "select * from Book where bid = '" + bid + "' "; 
+                SqlDataAdapter DA1 = new SqlDataAdapter(cmd);
+                DataSet DS1 = new DataSet();
+                DA1.Fill(DS1);
+                int count = int.Parse(DS1.Tables[0].Rows[0][5].ToString());
+                if (count >= 1)
+                {
+                    //marhale baadi
+                    //chan ta ketab dare alan?
+                    cmd.CommandText = "select * from BRbook where brusername = '" + username + "' and brdatereturned = '"+ null +"' ";
+                    SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                    DataSet DS = new DataSet();
+                    DA.Fill(DS);
+                    int count2 = DS.Tables[0].Rows.Count;
+                    if (count2 < 6)
+                    {
+                        //change book
+                        count--;
+                        cmd.CommandText = "UPDATE book SET bcount = '" + count + "' where bid = '" + bid + "'   ";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        //change BRBook
+                        con = new SqlConnection();
+                        con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+                        cmd = new SqlCommand();
+                        cmd.Connection = con;
+                        con.Open();
+                        DateTime now = DateTime.Now;
+                        cmd.CommandText = "insert into BRbook (brusername, brbid, brdateborrowed, brdatereturned) values ('"+ username +"' , '"+ bid +"' , '"+ now +"' , '"+ null +"') ";
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        MessageBox.Show("Data saved.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show(" کتابای قرض گرفته بیشتر از 5 تاست! ", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show(" کتاب موجود نیست! ", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
 
         }
 
@@ -53,7 +114,7 @@ namespace UniLibProject
             {
                 //show all books
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
+                con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -66,7 +127,7 @@ namespace UniLibProject
             else
             {
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
+                con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
 
@@ -103,15 +164,16 @@ namespace UniLibProject
             search = "bookgenre";
         }
 
-        private void dataGrid_CellClick(object sender, SelectionChangedEventArgs e)
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //select book to borrow
 
-            if (dataGrid.SelectedItems.Count > 0)
-            {
-                //int rowid = int.Parse(dataGrid.SelectedItems.[0].[1].Value.ToString());
-            }
-               // int rowid = int.Parse(dataGrid.Rows[e.Row])
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            MembersDashboard mb = new MembersDashboard(username);
+            mb.Show();
+            this.Close();
         }
     }
 }

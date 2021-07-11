@@ -145,18 +145,6 @@
                             Margin="0,9,0,4"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <Button
-                                x:Name="Add_bookBtn"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Background="{x:Null}"
-                                BorderBrush="{x:Null}"
-                                Click="Add_bookBtn_Click"
-                                FontFamily="/UniLibProject;component/fonts/#Material Icons"
-                                FontSize="29"
-                                Foreground="White">
-                                
-                            </Button>
                             <TextBlock
                                 Width="399"
                                 Margin="15,0,15,3"
@@ -209,13 +197,13 @@
                                     </Button.Resources>
                                 </Button>
                                 <Button
-                                    Margin="8,0,0,0"
+                                    Margin="8,0,0,7.8"
                                     Padding="5,4"
                                     HorizontalAlignment="Center"
-                                    VerticalAlignment="Center"
+                                    VerticalAlignment="Bottom"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White" Content="کل اعضا">
+                                    Foreground="White" Content="کل اعضا" Click="Button_Click">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10" />
@@ -251,10 +239,12 @@
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
+                            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="315" Width="412" SelectionChanged="dataGrid_SelectionChanged"/>
                         </ItemsControl>
                     </Grid>
                 </Grid>
             </Grid>
+            <Button x:Name="SearchBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Content="&#xE8B6;" Click="SearchBtn_Click" Margin="10,23,458,401.8"/>
         </Grid>
     </Border>
 </Window>

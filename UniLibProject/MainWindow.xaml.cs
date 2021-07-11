@@ -44,9 +44,10 @@ namespace UniLibProject
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
             var pass = PasswordTbx.Password; var username = UserNameTbx.Text;
-            if  (pass== "AdminLib123" &&  username== "admin") {
-                adminEmployee ae = new adminEmployee();
-                ae.Show();
+            if (pass == "AdminLib123" && username == "admin")
+            {
+                AdminDashboard ad = new AdminDashboard();
+                ad.Show();
                 this.Close();
             }
             else if (username == "guest" && pass == "guest")
@@ -55,35 +56,72 @@ namespace UniLibProject
                 md.Show();
                 this.Close();
             }
-            else if (pass!= "" && username!="")
+            else if (pass != "" && username != "")
             {
                 //establish connection
+                bool flag = false;
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
+                con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
+                cmd.CommandText = "select * from Login";
                 con.Open();
-                //check existance
-                cmd.CommandText = "select * from Login where username = '" + username + "'  and  password = '" + pass + "'  ";
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
 
-                if (dt.Rows.Count > 0)
+                //check existance
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
                 {
-                    string usertype = "member";
-                    //check usertype and show relatd form
-                    if (usertype == "member")
+                    if (rd[1].ToString() == username)
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                con.Close();
+                if (flag == true)
+                {
+                    //Username exists
+                    con = new SqlConnection();
+                    con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+                    cmd = new SqlCommand();
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.CommandText = "select * from Login where username LIKE '" + username + "' ";
+
+                    SqlDataAdapter DA1 = new SqlDataAdapter(cmd);
+                    DataSet DS1 = new DataSet();
+                    DA1.Fill(DS1);
+
+                    string type = DS1.Tables[0].Rows[0][3].ToString(); 
+
+                    if (type == "member")
                     {
                         MembersDashboard md = new MembersDashboard(username);
                         md.Show();
                         this.Close();
+
                     }
+                    else
+                    {
+                        EmployeeDashboard ed = new EmployeeDashboard();
+                        ed.Show();
+                        this.Close();
+                    }
+
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
+                    //send to dashboard
+
                 }
-                else 
+                else
                 {
-                   MessageBox.Show("چنین کاربری وجود ندارد", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    //    //Username doesn't exist.
+                    MessageBox.Show(" کاربر یافت نشد  ", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+                    //clear textboxes   
                 }
+
             }
             else
             {

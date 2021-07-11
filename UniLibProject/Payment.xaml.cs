@@ -52,20 +52,30 @@ namespace UniLibProject
             {
                 //regex
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source= (LocalDb)\\LocalDBDemo; database = master; integrated security = True";
+                con.ConnectionString = "data source= (LocalDb)\\LibraryDB ; database = master; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con; 
                 con.Open();
-                cmd.CommandText = "Update Member set mbalance ='"+money+"' and mremainingdays = '"+"30"+"'  whrere username = '"+username +"' ";
-                cmd.CommandText = "Update Bank set busername ='" + username + "' and btransaction = '" + money + "'  and btime = '" + DateTime.Now + "' ";
+                cmd.CommandText = "Update Member set mbalance ='"+money+"' and mremainingdays = '"+ "30" +"'  whrere username = '"+username +"' ";
                 cmd.ExecuteNonQuery();
                 con.Close();
+
+                con = new SqlConnection();
+                con.ConnectionString = "data source= (LocalDb)\\LibraryDB ; database = master; integrated security = True";
+                cmd = new SqlCommand();
+                cmd.Connection = con;
+                con.Open();
+                cmd.CommandText = "insert into Bank set busername ='" + username + "' and btransaction = '" + money + "'  and btime = '" + DateTime.Now + "' ";
+                cmd.ExecuteNonQuery();
+                con.Close();
+                //edame masir
             }
             else
             {
                 MessageBox.Show("چنین کارتی وجود ندارد", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+                //edame masir?
             }
-            Close();
+            
         }
     }
 }

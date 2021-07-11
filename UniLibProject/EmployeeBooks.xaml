@@ -186,7 +186,7 @@
                                     VerticalAlignment="Center"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White">
+                                    Foreground="White" Click="Button_Click_2">
                                     کتب دردست اعضا
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
@@ -202,7 +202,7 @@
                                     VerticalAlignment="Center"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White">
+                                    Foreground="White" Click="Button_Click_1">
                                     کتب موجود
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
@@ -217,7 +217,7 @@
                                     VerticalAlignment="Center"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White">
+                                    Foreground="White" Click="Button_Click">
                                     کل کتب
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
@@ -254,6 +254,7 @@
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
+                            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Height="315" Width="412"/>
                         </ItemsControl>
                     </Grid>
                 </Grid>

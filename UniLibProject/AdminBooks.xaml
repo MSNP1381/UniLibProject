@@ -49,6 +49,7 @@ Background="Transparent"
                         <Button x:Name="MenuEmployeesBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Margin="0,9,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuEmployeesBtn_Click">&#xE7EF;</Button>
                         <Button x:Name="MenuBooksBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Margin="0,9,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuBooksBtn_Click">&#xE02F;</Button>
                         <Button  x:Name="MenuFinBtn" FontFamily="/UniLibProject;component/fonts/#Material Icons" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" Foreground="White" Margin="0,9,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Click="MenuFinBtn_Click">&#xE227;</Button>
+                        <Button x:Name="button" Content="back" Height="31" Margin="0,0,0.4,0" Click="button_Click"/>
                     </StackPanel>
                 </Border>
                 <Grid Grid.Column="0">

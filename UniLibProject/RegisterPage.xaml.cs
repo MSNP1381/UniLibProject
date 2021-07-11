@@ -44,9 +44,6 @@ namespace UniLibProject
         private void GoPaymaentBtn_Click(object sender, RoutedEventArgs e)
         {
             //check if user already exists
-            //check in Login table
-
-            
 
             if (PassTbx.Text != "" && UserNameTbx.Text != "" && EmailTbx.Text != "")
             {
@@ -61,76 +58,75 @@ namespace UniLibProject
                 //regex email & phone
 
                 //establish connection
+                bool flag = false;
                 SqlConnection con = new SqlConnection();
-                con.ConnectionString = "data source = (LocalDb)\\LocalDBDemo ; database = master ; integrated security = True";
+                con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = con;
+                cmd.CommandText = "select * from Login";
                 con.Open();
-                //check existance
-                cmd.CommandText = "select * from Login where username = '" + email + "'  and  password = '" + pass + "'  ";
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
 
-                if (dt.Rows.Count > 0)
+                //check existance
+                SqlDataReader rd = cmd.ExecuteReader();
+                while (rd.Read())
                 {
+                    if (rd[1].ToString() == email)
+                    {
+                        flag = true;
+                        break;
+                    }
+                }
+                con.Close();
+                if (flag == true)
+                {
+                    //Username exists
                     MessageBox.Show(" کاربر تکراری  ", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MainWindow mw = new MainWindow();
+                    mw.Show();
+                    this.Close();
                 }
                 else
                 {
+                    //new user
                     //add user to Login table & Member Table
-                    cmd.CommandText = "insert into Library (username, password, usertype) values ('" + email + "' , '" + pass + "' , '" + "member" + "') ";
-                    cmd.CommandText = "insert into Member (mname, memail, mphone, msignupdate, mrenewaldate, mremainingdays, mbalance) values ('" + name + "' , '" + email + "' , '" + Phone + "' , '" + signupDate + "'  , '" + "0" + "' , '" + "0" + "') ";
+                    con = new SqlConnection();
+                    con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+                    cmd = new SqlCommand();
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.CommandText = "insert into Member (mname, memail, mphone, msignupdate, mrenewaldate, mremainingdays, mbalance, mimage) values ('" + name + "' , '" + email + "' , '" + Phone + "' , '" + signupDate + "' ,   '" + signupDate + "' , '" + "0" + "' , '" + "0" + "' ,'"+ UserPicImg.Source + "'   ) ";
                     cmd.ExecuteNonQuery();
                     con.Close();
+
+                    con = new SqlConnection();
+                    con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+                    cmd = new SqlCommand();
+                    cmd.Connection = con;
+                    con.Open();
+                    cmd.CommandText = "insert into Login (username, pass, usertype) values ('" + email + "' , '" + pass + "' , '" + "member" + "') ";
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+
                     decimal money = 20000;
-                    Payment p = new Payment(name, money);
+                    Payment p = new Payment(email, money);
                     p.Show();
                     this.Close();
+
+                    
                 }
+
             }
             else
             {
                 MessageBox.Show("جاهای خالی را پر کنید", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+   
+                    
+     
 
 
 
-            // EmailTbx;
-            //  PassTbx;
-            //  UserNameTbx;
-            //  PhoneTbx;
-            //Member newMember = new Member()
-            //{
-            //    name =UserNameTbx.Text,
-            //    email =EmailTbx.Text,
-            //    charge =0,
-            //    Phone =Convert.ToDecimal( PhoneTbx.Text),
-            //    pass=PassTbx.Text,
-            //    date_added = DateTime.Now
-            //};
-
-
-            //var MemberFinder = (from m in _db.Member
-            //                       where m.name == newMember.name || m.Phone == newMember.Phone || m.email == newMember.email
-            //                       select m).ToList();
-            //if (MemberFinder.Count > 0)
-            //{
-            //    MessageBox.Show("چنین کاربری وجود دارد", "اخطار", MessageBoxButton.OK, MessageBoxImage.Error);
-
-            //}
-            //else
-            //{
-
-            //    _db.Member.Add(newMember);
-            //    _db.SaveChanges();
-            //    var i = _db.Member.ToList();
-
-            //    Payment p = new Payment();
-            //    p.Show();
-            //    this.Close();
-            //}
         }
 
 

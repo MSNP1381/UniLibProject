@@ -55,5 +55,28 @@ namespace UniLibProject
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+
+            SqlDataAdapter connDA = new SqlDataAdapter("Select * from member", con);
+            DataTable table = new DataTable("member");
+            connDA.Fill(table);
+            dataGrid.ItemsSource = table.DefaultView;
+        }
+
+        private void SearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //search for a specific member  
+        }
+
+        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

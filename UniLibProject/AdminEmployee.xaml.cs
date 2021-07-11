@@ -24,12 +24,16 @@ namespace UniLibProject
         public adminEmployee()
         {
             InitializeComponent();
-     
-            //list<employee2> items = new list<employee2>();
-            //items.add(new employee2() { name = "اصغر", id=0 });
-            //items.add(new employee2() { name = "شفتالی",id=1});
-            //items.add(new employee2() { name = "هعیم", id = 2 });
-            //lvemployees.itemssource = items;
+            //namayeshe listi az employee ha 
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+
+            SqlDataAdapter connDA = new SqlDataAdapter("Select * from employee", con);
+            DataTable table = new DataTable("employee");
+            connDA.Fill(table);
+            dataGrid.ItemsSource = table.DefaultView;
         }
 
         private void lvEmployees_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -96,8 +100,8 @@ namespace UniLibProject
 
         private void AddEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
-            IncreaseBalance ib = new IncreaseBalance();
-            ib.Show();
+            AddEmployee ae = new AddEmployee();
+            ae.Show();
             this.Close();
         }
 
@@ -105,6 +109,13 @@ namespace UniLibProject
         {
             
 
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            AdminDashboard ad = new AdminDashboard();
+            ad.Show();
+            this.Close();
         }
     }
     class Employee2
