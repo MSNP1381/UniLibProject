@@ -19,12 +19,20 @@ namespace UniLibProject
     /// <summary>
     /// Interaction logic for MembersDashboard.xaml
     /// </summary>
+    
     public partial class MembersDashboard : Window
     {
         string user;
         public MembersDashboard(string username)
         {
+            try
+            {
 
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("exception", "error accured, restarting program", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
             InitializeComponent();
             textBlock.Text = username;
             user = username;
@@ -32,7 +40,11 @@ namespace UniLibProject
             SqlConnection con = new SqlConnection();
             con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
             SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            cmd.Connection = con; cmd.CommandText = "select * from Member where musername = '" + user + "' ";
+            SqlDataAdapter DA1 = new SqlDataAdapter(cmd);
+            DataSet DS1 = new DataSet();
+            DA1.Fill(DS1);
+            //bedast avordane time remaining
 
             SqlDataAdapter connDA = new SqlDataAdapter("Select * from Book", con);
             DataTable table = new DataTable("Book");
@@ -46,6 +58,7 @@ namespace UniLibProject
         private void button3_Click(object sender, RoutedEventArgs e)
         {
             // amanat gereftane ketab
+
             BorrowBook bb = new BorrowBook(user);
             bb.Show();
             this.Close();

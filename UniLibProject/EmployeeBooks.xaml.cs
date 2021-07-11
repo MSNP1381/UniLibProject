@@ -33,7 +33,7 @@ namespace UniLibProject
 
         private void closeBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Close();
         }
 
         private void MenuEmployeesBtn_Click(object sender, RoutedEventArgs e)
@@ -90,15 +90,29 @@ namespace UniLibProject
         {
             //namayeshe listi az ketab ha 
             //ketabaye daste mellat
-            SqlConnection con = new SqlConnection();
-            con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = con;
+            try
+            {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = "data source = (LocalDb)\\LibraryDB ; database = master ; integrated security = True";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = con;
 
-            SqlDataAdapter connDA = new SqlDataAdapter("Select * from BRbook where brdatereturned = null", con);
-            DataTable table = new DataTable("BRbook");
-            connDA.Fill(table);
-            dataGrid.ItemsSource = table.DefaultView;
+                SqlDataAdapter connDA = new SqlDataAdapter("Select * from BRbook where brdatereturned = null", con);
+                DataTable table = new DataTable("BRbook");
+                connDA.Fill(table);
+                dataGrid.ItemsSource = table.DefaultView;
+            }
+            catch (Exception )
+            {
+
+            }
+        }
+
+        private void button_Click_3(object sender, RoutedEventArgs e)
+        {
+            EmployeeDashboard ed = new EmployeeDashboard();
+            ed.Show();
+            this.Close();
         }
     }
 }

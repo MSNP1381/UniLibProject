@@ -50,12 +50,6 @@ namespace UniLibProject
                 ad.Show();
                 this.Close();
             }
-            else if (username == "guest" && pass == "guest")
-            {
-                MembersDashboard md = new MembersDashboard(username);
-                md.Show();
-                this.Close();
-            }
             else if (pass != "" && username != "")
             {
                 //establish connection

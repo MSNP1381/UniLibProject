@@ -129,6 +129,7 @@
                                 Foreground="White" Click="MenuEmployeeEditBtn_Click">
                                 &#xE254;
                             </Button>
+                            <Button x:Name="button" Content="Back" Height="31" Margin="0,0,0.4,0" Click="button_Click_3"/>
                         </StackPanel>
                     </Border>
                     <Grid Grid.Column="0">

@@ -78,5 +78,12 @@ namespace UniLibProject
         {
 
         }
+
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            EmployeeDashboard ed = new EmployeeDashboard();
+            ed.Show();
+            this.Hide();
+        }
     }
 }
