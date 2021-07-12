@@ -48,8 +48,10 @@
                     x:Name="closeBtn"
                     Grid.Row="0"
                     Width="20"
+                    Height="20"
                     Margin="0"
                     HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
                     HorizontalContentAlignment="Center"
                     VerticalContentAlignment="Center"
                     Background="#FFF02525"
@@ -57,7 +59,7 @@
                     BorderThickness="1"
                     Click="closeBtn_Click"
                     Content="x"
-                    FontSize="8" Height="20" VerticalAlignment="Top">
+                    FontSize="8">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="10" />
@@ -123,10 +125,10 @@
                                 VerticalAlignment="Center"
                                 Background="{x:Null}"
                                 BorderBrush="{x:Null}"
-                                
+                                Click="MenuEmployeeEditBtn_Click"
                                 FontFamily="/UniLibProject;component/fonts/#Material Icons"
                                 FontSize="29"
-                                Foreground="White" Click="MenuEmployeeEditBtn_Click">
+                                Foreground="White">
                                 &#xE254;
                             </Button>
                         </StackPanel>
@@ -144,18 +146,6 @@
                             Margin="0,9,0,4"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <Button
-                                x:Name="Add_bookBtn"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Background="{x:Null}"
-                                BorderBrush="{x:Null}"
-                                Click="Add_bookBtn_Click"
-                                FontFamily="/UniLibProject;component/fonts/#Material Icons"
-                                FontSize="29"
-                                Foreground="White">
-                                
-                            </Button>
                             <TextBlock
                                 Width="399"
                                 Margin="15,0,15,3"
@@ -179,14 +169,14 @@
                             BorderThickness="0"
                             CornerRadius="9">
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                                <Button
+                                <Button x:Name="notAvailableBooksBtn"
                                     Margin="8,0,0,0"
                                     Padding="5,4"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White">
+                                    Foreground="White" Click="notAvailableBooksBtn_Click">
                                     کتب دردست اعضا
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
@@ -195,14 +185,14 @@
                                     </Button.Resources>
                                 </Button>
 
-                                <Button
+                                <Button x:Name="availableBooksBtn"
                                     Margin="8,0,0,0"
                                     Padding="5,4"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White">
+                                    Foreground="White" Click="availableBooksBtn_Click">
                                     کتب موجود
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
@@ -210,14 +200,14 @@
                                         </Style>
                                     </Button.Resources>
                                 </Button>
-                                <Button
+                                <Button x:Name="allBooksBtn"
                                     Margin="8,0,0,0"
                                     Padding="5,4"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White">
+                                    Foreground="White" Click="allBooksBtn_Click">
                                     کل کتب
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
@@ -237,6 +227,8 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="1*" />
                                             <ColumnDefinition Width="10*" />
+                                            <ColumnDefinition Width="10*" />
+                                            <ColumnDefinition Width="10*" />
                                         </Grid.ColumnDefinitions>
                                         <Button
                                             HorizontalAlignment="Center"
@@ -250,7 +242,15 @@
                                         <TextBlock
                                             Grid.Column="1"
                                             FlowDirection="RightToLeft"
-                                            Text="{Binding Name}" />
+                                            Text="{Binding name}" />
+                                        <TextBlock
+                                            Grid.Column="2"
+                                            FlowDirection="RightToLeft"
+                                            Text="{Binding Genere}" />
+                                        <TextBlock
+                                            Grid.Column="3"
+                                            FlowDirection="RightToLeft"
+                                            Text="{Binding author}" />
                                     </Grid>
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>

@@ -22,27 +22,16 @@ namespace UniLibProject
         public MainWindow()
         {
             InitializeComponent();
-     
-            /*
 
-                Member newMember = new Member()
-                {
-                    name = "dsa",
-                    email = "dsfs",
-                    balance = 3213213213,
-                    date_added = DateTime.Now
-
-                };
-                Member newMember2 = new Member()
-                {
-                    name = "dsa2",
-                    email = "dsfs2",
-                    balance = 32132132123,
-                    date_added = DateTime.Now                };
-
-                _db.Members.Add(newMember);
-            _db.SaveChanges();*/
-
+            //var mem = new Member();
+            //mem.name =;
+            //mem.Phone =;
+            //mem.pass =;
+            //mem.charge =;
+            //mem.date_added =;
+            //mem.date_charged=;
+            //mem.days_left =;
+    
             }
    
 
@@ -56,6 +45,9 @@ namespace UniLibProject
             RegisterPage r = new RegisterPage();
             r.Show();
             this.Close();
+            //EmployeeBooks eb = new EmployeeBooks();
+            //eb.Show();
+            //Close();
         }
 
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
@@ -74,7 +66,9 @@ namespace UniLibProject
                           select m).DefaultIfEmpty().Single();
                 if (theMember != null) 
                 {
-
+                    var mb = new MebmerBooks(theMember.Id);
+                    mb.Show();
+                    Close();
                 }
                 else 
                 {
@@ -83,7 +77,7 @@ namespace UniLibProject
                                      select m).DefaultIfEmpty().Single();
                     if (theEmployee != null) 
                     {
-                        var em = new EmployeeMembers();
+                        var em = new EmployeeMembers(theEmployee.Id);
                         em.Show();
                         this.Close();
                     }

@@ -12,19 +12,14 @@ namespace UniLibProject
     using System;
     using System.Collections.Generic;
     
-    public partial class Book
+    public partial class Books
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string name { get; set; }
         public Nullable<decimal> code { get; set; }
         public string author { get; set; }
         public string Genere { get; set; }
-        public Nullable<System.DateTime> Borrow_date { get; set; }
+        public Nullable<System.DateTime> BorrowDate { get; set; }
         public Nullable<int> MemberId { get; set; }
-    
-        public virtual Member Member { get; set; }
-        public virtual Member Member1 { get; set; }
-        public virtual Book Book1 { get; set; }
-        public virtual Book Book2 { get; set; }
     }
 }

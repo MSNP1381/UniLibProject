@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UniLibProject.Contents;
 
 namespace UniLibProject
 {
@@ -42,6 +43,13 @@ namespace UniLibProject
         private void CheckoutBtn_Click(object sender, RoutedEventArgs e)
         {
             bool allCorrect = true;
+            var cardNum=(CardNumTbx.Text);
+            var Month = (MonthTbx.Text);
+            var Year =(YearTbx.Text);
+            var Cvv = (CvvTbx.Text);
+            RegexClass.CardNumber(cardNum);
+            RegexClass.CVV(Cvv);
+            RegexClass.Expire(Year, Month);
             if (allCorrect) 
             {
                 var TheMember = (from m in _db.Member

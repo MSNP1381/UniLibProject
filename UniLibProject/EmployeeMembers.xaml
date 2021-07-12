@@ -42,7 +42,7 @@
                     FontSize="14"
                     Foreground="Black"
                     Opacity="0.85"
-                    TextAlignment="Center"><Span FlowDirection="RightToLeft"><Run Text="کارمندان"/><Run Text="- "/><Run Text="اعضا"/></Span></TextBlock>
+                    TextAlignment="Center"><Span FlowDirection="RightToLeft"><Run Text="کارمندان" /><Run Text="- " /><Run Text="اعضا" /></Span></TextBlock>
 
                 <Button
                     x:Name="closeBtn"
@@ -124,15 +124,19 @@
                                 VerticalAlignment="Center"
                                 Background="{x:Null}"
                                 BorderBrush="{x:Null}"
-                                
+                                Click="MenuEmployeeEditBtn_Click"
                                 FontFamily="/UniLibProject;component/fonts/#Material Icons"
                                 FontSize="29"
-                                Foreground="White" Click="MenuEmployeeEditBtn_Click">
+                                Foreground="White">
                                 &#xE254;
                             </Button>
                         </StackPanel>
                     </Border>
                     <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="343*" />
+                            <ColumnDefinition Width="109*" />
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="45*" />
                             <RowDefinition Height="45*" />
@@ -141,22 +145,11 @@
                         </Grid.RowDefinitions>
                         <StackPanel
                             Grid.Row="0"
+                            Grid.ColumnSpan="2"
                             Height="32"
-                            Margin="0,9,0,4"
+                            Margin="0,7,0,2"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <Button
-                                x:Name="Add_bookBtn"
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Background="{x:Null}"
-                                BorderBrush="{x:Null}"
-                                Click="Add_bookBtn_Click"
-                                FontFamily="/UniLibProject;component/fonts/#Material Icons"
-                                FontSize="29"
-                                Foreground="White">
-                                
-                            </Button>
                             <TextBlock
                                 Width="399"
                                 Margin="15,0,15,3"
@@ -167,11 +160,11 @@
                                 FontSize="15"
                                 Foreground="#92FFFFFF"
                                 TextAlignment="Center"
-                                TextWrapping="Wrap" ><Run Text="لیست"/><Run FlowDirection="RightToLeft" Text=" "/><Run Text=" "/><Run FlowDirection="RightToLeft" Text="اعضا"/></TextBlock>
+                                TextWrapping="Wrap"><Run Text="لیست" /><Run FlowDirection="RightToLeft" Text=" " /><Run Text=" " /><Run FlowDirection="RightToLeft" Text="اعضا" /></TextBlock>
                         </StackPanel>
                         <Border
                             Grid.Row="1"
-                            Margin="0,0,6,0"
+                            Margin="106,0,3,0"
                             Padding="0,0,5,0"
                             HorizontalAlignment="Center"
                             Background="#FF5F81A8"
@@ -180,13 +173,16 @@
                             CornerRadius="9">
                             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                                 <Button
+                                    x:Name="LateFinBtn"
                                     Margin="8,0,0,0"
                                     Padding="5,4"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White" Content="متاخر مالی">
+                                    Click="LateFinBtn_Click"
+                                    Content="متاخر مالی"
+                                    Foreground="White">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10" />
@@ -195,13 +191,16 @@
                                 </Button>
 
                                 <Button
+                                    x:Name="LateBackBtn"
                                     Margin="8,0,0,0"
                                     Padding="5,4"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White" Content="متاخر بازگردانی">
+                                    Click="LateBackBtn_Click"
+                                    Content="متاخر بازگردانی"
+                                    Foreground="White">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10" />
@@ -209,13 +208,16 @@
                                     </Button.Resources>
                                 </Button>
                                 <Button
+                                    x:Name="allMembersBtn"
                                     Margin="8,0,0,0"
                                     Padding="5,4"
                                     HorizontalAlignment="Center"
                                     VerticalAlignment="Center"
                                     Background="#FF3498DB"
                                     BorderBrush="{x:Null}"
-                                    Foreground="White" Content="کل اعضا">
+                                    Click="allMembersBtn_Click"
+                                    Content="کل اعضا"
+                                    Foreground="White">
                                     <Button.Resources>
                                         <Style TargetType="{x:Type Border}">
                                             <Setter Property="CornerRadius" Value="10" />
@@ -227,6 +229,7 @@
                         <ItemsControl
                             Name="lvEmployees"
                             Grid.Row="2"
+                            Grid.ColumnSpan="2"
                             Margin="20">
                             <ItemsControl.ItemTemplate>
                                 <DataTemplate>
@@ -247,8 +250,16 @@
                                         <TextBlock
                                             Grid.Column="1"
                                             FlowDirection="RightToLeft"
-                                            Text="{Binding Name}" />
+                                            Foreground="White"
+                                            Text="{Binding name}" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            FlowDirection="RightToLeft"
+                                            Foreground="White"
+                                            Text="{Binding Id}" />
+
                                     </Grid>
+
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>

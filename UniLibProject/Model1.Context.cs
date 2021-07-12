@@ -25,8 +25,8 @@ namespace UniLibProject
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Book> Book { get; set; }
         public virtual DbSet<Member> Member { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Books> Books { get; set; }
     }
 }

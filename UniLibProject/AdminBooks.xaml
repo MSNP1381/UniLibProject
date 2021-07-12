@@ -63,16 +63,37 @@ Background="Transparent"
                         <TextBlock Foreground="#92FFFFFF" Background="#00000000" TextWrapping="Wrap" TextAlignment="Center"    FlowDirection="RightToLeft" Margin="15,0,15,3" Padding="0" FontSize="15" Text="لیست کتب" Width="399" VerticalAlignment="Bottom" />
                     </StackPanel>
 
-                    <ItemsControl  Grid.Row="1" Margin="20" Name="lvEmployees">
+                    <ItemsControl  Grid.Row="1" Margin="20" Name="LvAddBooks">
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="1*"></ColumnDefinition>
-                                        <ColumnDefinition Width="10*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*" />
+                                        <ColumnDefinition Width="10*" />
+                                        <ColumnDefinition Width="10*" />
+                                        <ColumnDefinition Width="10*" />
                                     </Grid.ColumnDefinitions>
-                                    <Button Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontWeight="Bold">-</Button>
-                                    <TextBlock Grid.Column="1" Text="{Binding Name}" FlowDirection="RightToLeft" />
+                                    <Button
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            HorizontalContentAlignment="Center"
+                                            VerticalContentAlignment="Center"
+                                            FontWeight="Bold"
+                                            Foreground="White">
+                                        -
+                                    </Button>
+                                    <TextBlock
+                                            Grid.Column="1"
+                                            FlowDirection="RightToLeft"
+                                            Text="{Binding name}" />
+                                    <TextBlock
+                                            Grid.Column="2"
+                                            FlowDirection="RightToLeft"
+                                            Text="{Binding Genere}" />
+                                    <TextBlock
+                                            Grid.Column="3"
+                                            FlowDirection="RightToLeft"
+                                            Text="{Binding author}" />
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>

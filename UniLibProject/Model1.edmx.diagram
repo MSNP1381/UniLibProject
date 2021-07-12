@@ -5,12 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="d38fab5c0efd475eb819bec75981bf78" Name="Diagram1">
-        <EntityTypeShape EntityType="UniLibDbModel.Book" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UniLibDbModel.Member" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UniLibDbModel.Employee" Width="1.5" PointX="5.125" PointY="0.75" />
-        <AssociationConnector Association="UniLibDbModel.FK__Book__MemberId__38996AB5" />
-        <AssociationConnector Association="UniLibDbModel.FK__Book__MemberId__398D8EEE" />
-        <AssociationConnector Association="UniLibDbModel.FK_Person_id" />
+        <EntityTypeShape EntityType="UniLibDbModel.Books" Width="1.5" PointX="0.5" PointY="1.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -15,25 +15,23 @@ using System.Windows.Shapes;
 namespace UniLibProject
 {
     /// <summary>
-    /// Interaction logic for AdminBooks.xaml
+    /// Interaction logic for MemberAllBooks.xaml
     /// </summary>
-    public partial class AdminBooks : Window
+    public partial class MemberAllBooks : Window
     {
+
         UniLibDbEntities2 _db = new UniLibDbEntities2();
-
-        public AdminBooks()
+        public MemberAllBooks
+        (   )
         {
-        InitializeComponent();
-            var books=_db.Books.ToList();
-            LvAddBooks.ItemsSource = books;
-        }
-
        
-        private void Add_bookBtn_Click(object sender, RoutedEventArgs e)
-        {
-            var ab = new AddBook();
-            ab.ShowDialog();
-            
+            InitializeComponent();
+            var bookList =
+
+               (from m in _db.Books
+           
+                select m).DefaultIfEmpty().ToList();
+            LvAddBooks.ItemsSource = bookList;
         }
 
         private void closeBtn_Click(object sender, RoutedEventArgs e)
@@ -41,8 +39,9 @@ namespace UniLibProject
             Close();
         }
 
-        private void MenuEmployeesBtn_Click(object sender, RoutedEventArgs e)
+        private void MenuFinBtn_Click(object sender, RoutedEventArgs e)
         {
+
 
         }
 
@@ -51,7 +50,7 @@ namespace UniLibProject
 
         }
 
-        private void MenuFinBtn_Click(object sender, RoutedEventArgs e)
+        private void MenuEmployeesBtn_Click(object sender, RoutedEventArgs e)
         {
 
         }

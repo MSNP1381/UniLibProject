@@ -19,14 +19,12 @@ namespace UniLibProject
     /// </summary>
     public partial class adminEmployee : Window
     {
+        UniLibDbEntities2 _db = new UniLibDbEntities2();
         public adminEmployee()
         {
             InitializeComponent();
-     
-            List<Employee2> items = new List<Employee2>();
-            items.Add(new Employee2() { Name = "اصغر", Id=0 });
-            items.Add(new Employee2() { Name = "شفتالی",Id=1});
-            items.Add(new Employee2() { Name = "هعیم", Id = 2 });
+            var items = _db.Employee.ToList();
+       
             lvEmployees.ItemsSource = items;
         }
 
@@ -52,7 +50,8 @@ namespace UniLibProject
 
         private void MenuFinBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var e1 = new IncreaseBalance(2000000);
+            e1.ShowDialog();
         }
 
         private void SearchBtn_Click(object sender, RoutedEventArgs e)
@@ -67,13 +66,16 @@ namespace UniLibProject
 
         private void AddEmployeeBtn_Click(object sender, RoutedEventArgs e)
         {
+            var ea = new EmployeeAccount();
+            ea.ShowDialog();
+            
+        }
 
+        private void DeleteEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            var i = lvEmployees.ItemTemplateSelector;
+            
         }
     }
-    class Employee2
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-    }
+   
 }

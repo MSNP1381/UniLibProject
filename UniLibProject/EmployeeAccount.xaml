@@ -20,154 +20,115 @@
         BorderThickness="0"
         CornerRadius="9">
         <Grid>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="7*" />
-                    <RowDefinition Height="53*" />
-                    <RowDefinition Height="30*" />
-                    <RowDefinition Height="30*" />
-                    <RowDefinition Height="30*" />
-                </Grid.RowDefinitions>
-                <StackPanel Background="#d9d4d1">
-                    <StackPanel.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10" />
-                        </Style>
-                    </StackPanel.Resources>
-                </StackPanel>
-                <TextBlock
-                    Grid.Row="0"
-                    Width="298"
-                    Height="18"
-                    Margin="0,0,0,3"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    FontSize="14"
-                    Foreground="Black"
-                    Opacity="0.85"
-                    TextAlignment="Center"><Span FlowDirection="RightToLeft"><Run Text="کارمندان" /><Run Text="- " /><Run Text="ویرایش اطلاعات" /></Span></TextBlock>
+            <StackPanel Background="#d9d4d1" Height="20" Margin="0,0,0,430">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </StackPanel.Resources>
+            </StackPanel>
+            <TextBlock
+                Grid.Row="0"
+                Width="298"
+                Height="18"
+                Margin="249,0,253,432"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontSize="14"
+                Foreground="Black"
+                Opacity="0.85"
+                TextAlignment="Center"><Span FlowDirection="RightToLeft"><Run Text="کارمندان"/><Run Text="- "/><Run Text="اعضا"/></Span></TextBlock>
 
-                <Button
-                    x:Name="closeBtn"
-                    Grid.Row="0"
-                    Width="20"
-                    Height="20"
-                    Margin="0"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Top"
-                    HorizontalContentAlignment="Center"
-                    VerticalContentAlignment="Center"
-                    Background="#FFF02525"
-                    BorderBrush="{x:Null}"
-                    BorderThickness="1"
-                    Click="closeBtn_Click"
-                    Content="x"
-                    FontSize="8">
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius" Value="10" />
-                        </Style>
-                    </Button.Resources>
-                </Button>
+            <Button
+                x:Name="closeBtn1"
+                Grid.Row="0"
+                Width="20"
+                Height="20"
+                Margin="0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Background="#FFF02525"
+                BorderBrush="{x:Null}"
+                BorderThickness="1"
+                Click="closeBtn_Click"
+                Content="x"
+                FontSize="8">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10" />
+                    </Style>
+                </Button.Resources>
+            </Button>
 
-                <StackPanel
-                    Grid.Row="1"
-                    HorizontalAlignment="Right"
-                    Orientation="Horizontal">
-                    <StackPanel>
+            <TextBox
+                x:Name="name1"
+                Margin="406,163,134,264"
+                Padding="0,0,0,2"
+                       
+                Background="#00000000"
+                BorderThickness="0,0,0,1"
+                FlowDirection="RightToLeft"
+                FontSize="15"
+                Foreground="#FFEAEAEA"
+                SelectionBrush="#72FFFFFF"
+                Text="نام"
+                TextAlignment="Center"
+                TextChanged="UserIdTbx_TextChanged"
+                TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Width="260" HorizontalContentAlignment="Center" />
+            <TextBox
+                x:Name="Family1"
+                Margin="108,163,432,264"
+                Padding="0,0,0,2"
+                       
+                Background="#00000000"
+                BorderThickness="0,0,0,1"
+                FlowDirection="RightToLeft"
+                FontSize="15"
+                Foreground="#FFEAEAEA"
+                SelectionBrush="#72FFFFFF"
+                Text="رمز عبور"
+                TextAlignment="Center"
+                TextChanged="UserIdTbx_TextChanged"
+                TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Width="260" />
+            <TextBlock HorizontalAlignment="Center" Margin="338,58,344,0" TextWrapping="Wrap" Text="ویرایش اطلاعات کارمند" VerticalAlignment="Top" Foreground="White" Padding="0"/>
+            <TextBox
+                x:Name="phoneTbx"
+                Margin="264,278,276,148"
+                Padding="0,0,0,2"
+                       
+                Background="#00000000"
+                BorderThickness="0,0,0,1"
+                FlowDirection="RightToLeft"
+                FontSize="15"
+                Foreground="#FFEAEAEA"
+                SelectionBrush="#72FFFFFF"
+                Text="شماره همراه"
+                TextAlignment="Center"
+                TextChanged="UserIdTbx_TextChanged"
+                TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" Width="260" />
 
-                        <TextBox
-                            x:Name="NameTbx"
-                            Margin="15,0"
-                            Padding="0,0,0,2"
-                            VerticalAlignment="Bottom"
-                            HorizontalContentAlignment="Center"
-                            Background="#00000000"
-                            BorderThickness="0,0,0,1"
-                            FlowDirection="RightToLeft"
-                            FontSize="15"
-                            Foreground="#FFEAEAEA"
-                            SelectionBrush="#72FFFFFF"
-                            Text="Name"
-                            TextAlignment="Center"
-                        
-                            TextWrapping="Wrap" />
-                        <TextBox
-                            x:Name="IdTbx"
-                            Margin="15,0"
-                            Padding="0,0,0,2"
-                            VerticalAlignment="Bottom"
-                            HorizontalContentAlignment="Center"
-                            Background="#00000000"
-                            BorderThickness="0,0,0,1"
-                            FlowDirection="RightToLeft"
-                            FontSize="15"
-                            Foreground="#FFEAEAEA"
-                            SelectionBrush="#72FFFFFF"
-                            Text="Id"
-                            TextAlignment="Center"
-                            TextChanged="UserIdTbx_TextChanged"
-                            TextWrapping="Wrap" />
 
 
-
-                    </StackPanel>
-                    <Image Source="Images/personPlaceholder.png" />
-                </StackPanel>
-                <StackPanel
-                    Grid.Row="2"
-                    HorizontalAlignment="Right"
-                    Orientation="Horizontal">
-                    <TextBox
-                        x:Name="t2"
-                        Margin="15,0"
-                        Padding="0,0,0,2"
-                        VerticalAlignment="Bottom"
-                        HorizontalContentAlignment="Center"
-                        Background="#00000000"
-                        BorderThickness="0,0,0,1"
-                        FlowDirection="RightToLeft"
-                        FontSize="15"
-                        Foreground="#FFEAEAEA"
-                        SelectionBrush="#72FFFFFF"
-                        Text="Id"
-                        TextAlignment="Center"
-                        TextChanged="UserIdTbx_TextChanged"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        x:Name="t7"
-                        Margin="15,0"
-                        Padding="0,0,0,2"
-                        VerticalAlignment="Bottom"
-                        HorizontalContentAlignment="Center"
-                        Background="#00000000"
-                        BorderThickness="0,0,0,1"
-                        FlowDirection="RightToLeft"
-                        FontSize="15"
-                        Foreground="#FFEAEAEA"
-                        SelectionBrush="#72FFFFFF"
-                        Text="Id"
-                        TextAlignment="Center"
-                        TextChanged="UserIdTbx_TextChanged"
-                        TextWrapping="Wrap" />
-                    <TextBox
-                        x:Name="t9"
-                        Margin="15,0"
-                        Padding="0,0,0,2"
-                        VerticalAlignment="Bottom"
-                        HorizontalContentAlignment="Center"
-                        Background="#00000000"
-                        BorderThickness="0,0,0,1"
-                        FlowDirection="RightToLeft"
-                        FontSize="15"
-                        Foreground="#FFEAEAEA"
-                        SelectionBrush="#72FFFFFF"
-                        Text="Id"
-                        TextAlignment="Center"
-                        TextChanged="UserIdTbx_TextChanged"
-                        TextWrapping="Wrap" />
-                </StackPanel>
-            </Grid>
+            <Button
+                        x:Name="RegisterBtn"
+                        Grid.Column="0"
+                        Padding="50,10"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Background="#3498db"
+                        Click="GoRegisterBtn_Click"
+                        FontSize="13"
+                        Foreground="White" Margin="332,380,328,31">
+                ثبت
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5" />
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
+
     </Border>
 </Window>

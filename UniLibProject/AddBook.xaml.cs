@@ -31,7 +31,14 @@ namespace UniLibProject
 
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            var b = new Books();
+            b.author =AuthotNameTbx.Text;
+            b.code =Convert.ToDecimal( PubNoTbx.Text);
+            b.Genere =GenereTbx.Text;
+            b.name =BookNameTbx.Text;
+            UniLibDbEntities2 Db = new UniLibDbEntities2();
+            Db.Books.Add(b);
+            Db.SaveChanges();
         }
     }
 }
